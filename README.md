@@ -1,7 +1,7 @@
 # front-end-mastery
 
-## Installation  
+## Installation
 
 ```
-npm install --save-dev webpack webpack-cli
+npm install --save-dev webpack webpack-cli webpack-merge webpack-dev-server
 ```
