@@ -4,6 +4,9 @@ const path = require('path')
 
 module.exports = merge(common, {
     mode: 'development',
+    output: {
+        filename: '[name].[contenthash:12].js',
+    },
     devServer: {
         port: 9000,
         static: {
@@ -22,7 +25,20 @@ module.exports = merge(common, {
         rules: [
             {
                 test: /\.css$/,
+                exclude: /\.module\.css$/,
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.css$/,
+                include: /\.module\.css$/,
+                use: ['style-loader', {
+                    loader: 'css-loader',
+                    options: {
+                        modules: {
+                            localIdentName: '[local]--[md5:hash:7]'
+                        }
+                    }
+                }]
             }
         ]
     },

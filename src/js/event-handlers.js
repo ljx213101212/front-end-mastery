@@ -1,4 +1,4 @@
-import { renderTodos, clearNewTodoInput, getTodoId } from "./ui"
+import { renderTodos, clearNewTodoInput, getTodoId, showNotification } from "./ui"
 import { getAllTodos, addTodo, removeTodo, updateTodo } from "./data";
 
 export function onLoadEventHandler() {
@@ -14,6 +14,7 @@ export function newTodoEventHandler(event) {
     })
     renderTodos(getAllTodos())
     clearNewTodoInput()
+    showNotification()
 }
 
 export function removeTodoEventHandler(event) {
