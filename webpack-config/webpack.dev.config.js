@@ -7,15 +7,23 @@ module.exports = merge(common, {
     devServer: {
         port: 9000,
         static: {
-            directory: path.resolve(__dirname, '..')
+            directory: path.resolve(__dirname, '../dist')
         },
         devMiddleware: {
             index: 'index.html',
-            writeToDisk: true
+            writeToDisk: false
         },
         client: {
             overlay: true
         },
         liveReload: false
-    }
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            }
+        ]
+    },
 })

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --config webpack-config/webpack.dev.config.js --hot",
+    "clean": "rm -r dist", 
     "build": "webpack --config webpack-config/webpack.prod.config.js",
     "build:development": "webpack --config webpack-config/webpack.dev.config.js",
     "build:production": "webpack --config webpack-config/webpack.prod.config.js"
@@ -20,6 +21,11 @@
   },
   "homepage": "https://github.com/ljx213101212/webpack5-2022#readme",
   "devDependencies": {
+    "css-loader": "^6.7.1",
+    "html-loader": "^4.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "style-loader": "^3.3.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.0",
