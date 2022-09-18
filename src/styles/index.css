@@ -93,7 +93,7 @@ h1 {
     word-break: break-all;
     white-space: pre-wrap;
     margin: 0;
-    padding: 15px;
+    padding: 15px; 
 }
 
 .todolist-wrapper .todo-list li .delete {
@@ -102,7 +102,7 @@ h1 {
     margin-right: 10px;
     cursor: pointer;
     visibility: hidden;
-    background: url("../images/delete.png") center no-repeat;
+    background: url("../../images/delete.png") center no-repeat;
     background-size: 90%;
 }
 
