@@ -59,6 +59,7 @@ module.exports = merge(common, {
                     "style-loader",
                     // Translates CSS into CommonJS
                     "css-loader",
+                    "postcss-loader",
                     // Compiles Sass to CSS
                     "sass-loader",
                 ]

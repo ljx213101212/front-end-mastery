@@ -34,6 +34,16 @@ npm install less less-loader --save-dev
 npm install sass-loader sass webpack --save-dev
 ```
 
+## Browser Compatibility
+
+- PostCss
+
+```
+https://caniuse.com/
+
+npm install --save-dev autoprefixer postcss-loader
+```
+
 ## Important Configs
 
 - devServer
