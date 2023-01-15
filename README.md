@@ -26,12 +26,16 @@ Webpack loads import "./src/index.css" then paste <style>{{content}}</style> int
 
 - cssnano
 - less
+  - https://www.npmjs.com/package/less-loader#webpack-resolver
+  - using less can import bootstrap in relative path
 - sass
+- purgecss
 
 ```
 npm install css-minimizer-webpack-plugin --save-dev
 npm install less less-loader --save-dev
 npm install sass-loader sass webpack --save-dev
+npm i purgecss-webpack-plugin -D
 ```
 
 ## Browser Compatibility

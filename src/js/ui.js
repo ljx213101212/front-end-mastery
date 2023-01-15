@@ -1,4 +1,6 @@
+import "../styles/vendors.scss";
 import styles from "../styles/notification.module.less";
+
 
 export function renderTodos(todos) {
     const renderedItemArray = todos.map(function (todo) {
@@ -31,11 +33,11 @@ export function getTodoId(element) {
 }
 
 export function showNotification() {
-    const notification = `<div class="${styles.notification}">Todo item added</div>`
+    const notification = `<div class="alert alert-success ${styles.notification}">Todo item added</div>`
     document.body.innerHTML += notification;
 
-    setTimeout(() => {
-        const notificationElement = document.querySelector(`.${styles.notification}`)
-        notificationElement.parentNode.removeChild(notificationElement)
-    }, 2000);
+    // setTimeout(() => {
+    //     const notificationElement = document.querySelector(`.${styles.notification}`)
+    //     notificationElement.parentNode.removeChild(notificationElement)
+    // }, 2000);
 }
