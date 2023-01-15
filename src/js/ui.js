@@ -34,8 +34,8 @@ export function showNotification() {
     const notification = `<div class="${styles.notification}">Todo item added</div>`
     document.body.innerHTML += notification;
 
-    // setTimeout(() => {
-    //     const notificationElement = document.querySelector(`.${styles.notification}`)
-    //     notificationElement.parentNode.removeChild(notificationElement)
-    // }, 2000);
+    setTimeout(() => {
+        const notificationElement = document.querySelector(`.${styles.notification}`)
+        notificationElement.parentNode.removeChild(notificationElement)
+    }, 2000);
 }

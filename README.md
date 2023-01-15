@@ -22,6 +22,17 @@ Webpack loads import "./src/index.css" then paste <style>{{content}}</style> int
 
 ```
 
+## Optimizing CSS for production
+
+- cssnano
+- less
+- sass
+
+```
+npm install css-minimizer-webpack-plugin --save-dev
+
+```
+
 ## Important Configs
 
 - devServer
