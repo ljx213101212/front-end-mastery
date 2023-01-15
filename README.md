@@ -30,7 +30,8 @@ Webpack loads import "./src/index.css" then paste <style>{{content}}</style> int
 
 ```
 npm install css-minimizer-webpack-plugin --save-dev
-
+npm install less less-loader --save-dev
+npm install sass-loader sass webpack --save-dev
 ```
 
 ## Important Configs
