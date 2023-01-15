@@ -1,4 +1,4 @@
-import styles from "../styles/notification.module.css";
+import styles from "../styles/notification.module.less";
 
 export function renderTodos(todos) {
     const renderedItemArray = todos.map(function (todo) {
