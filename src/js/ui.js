@@ -1,5 +1,6 @@
 import "../styles/vendors.scss";
 import styles from "../styles/notification.module.less";
+import { getMotivationalPictures } from "./api";
 
 
 export function renderTodos(todos) {
@@ -18,6 +19,7 @@ export function renderTodos(todos) {
         `
     })
     document.querySelector('.todo-list').innerHTML = renderedItemArray.join('')
+    //renderMotivationalPictures();
 }
 
 export function clearNewTodoInput() {
@@ -36,8 +38,25 @@ export function showNotification() {
     const notification = `<div class="alert alert-success ${styles.notification}">Todo item added</div>`
     document.body.innerHTML += notification;
 
-    // setTimeout(() => {
-    //     const notificationElement = document.querySelector(`.${styles.notification}`)
-    //     notificationElement.parentNode.removeChild(notificationElement)
-    // }, 2000);
+    setTimeout(() => {
+        const notificationElement = document.querySelector(`.${styles.notification}`)
+        notificationElement.parentNode.removeChild(notificationElement)
+    }, 2000);
+}
+
+function renderMotivationalPictures() {
+    getMotivationalPictures().then(pictures => {
+        const motivationalPictureHtml = `
+            <div class="motivational-pictures">
+                ${pictures.map(picture => {
+            return '<img class="header-image" src="' + picture + '" >'
+        }).join('')}
+            </div>
+        `
+
+        const motivationalPictureContainer = document.querySelector(
+            `.motivational-pictures-container`
+        );
+        motivationalPictureContainer.innerHTML = motivationalPictureHtml;
+    });
 }

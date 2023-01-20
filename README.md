@@ -38,6 +38,32 @@ npm install sass-loader sass webpack --save-dev
 npm i purgecss-webpack-plugin -D
 ```
 
+## Optimizing assets for production
+
+- image-webpack-loader(imagemin)
+
+```
+npm install image-webpack-loader --save-dev
+-rw-r--r--  1 jixiang  staff   1.3M Jan 20 14:26 header-image.5b361a0f2927..jpg
+-rw-r--r--  1 jixiang  staff   209K Jan 20 15:41 header-image.a5da3d2f56c9..jpg
+```
+
+- ImageMinimizerWebpackPlugin
+
+```
+npm install image-minimizer-webpack-plugin imagemin --save-dev
+npm install imagemin-gifsicle imagemin-mozjpeg imagemin-pngquant imagemin-svgo --save-dev
+```
+
+- Handle runtimes generated/fetched images
+
+```
+npm install copy-webpack-plugin --save-dev
+```
+
+- WEBP
+
+
 ## Browser Compatibility
 
 - PostCss
