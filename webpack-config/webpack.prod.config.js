@@ -9,10 +9,12 @@ const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = merge(common, {
     mode: 'production',
+    devtool: 'source-map',
     output: {
         filename: 'js/[name].[contenthash:12].js',
     },
     optimization: {
+        usedExports: true,
         minimize: true,
         minimizer: [
             '...',
@@ -70,7 +72,69 @@ module.exports = merge(common, {
                     }
                 ]
             })
-        ]
+        ],
+        runtimeChunk: 'single',
+        splitChunks: {
+            //[Strategy #2]: Specifying Criteria for code spliting.
+            chunks: 'all',
+            maxSize: Infinity,
+            minSize: 0,
+            //[Strategy #4]: Creating a JS bundle for each dependency.
+            cacheGroups: {
+                lodash: {
+                    test: /[\\/]node_modules[\\/]lodash-es[\\/]/,
+                    name: 'lodash-es'
+                },
+                emotion: {
+                    test: /[\\/]node_modules[\\/]@emotion[\\/]/,
+                    name: 'emotion'
+                },
+                corejs: {
+                    test: /[\\/]node_modules[\\/]core-js[\\/]/,
+                    name: 'corejs'
+                },
+                node_modules: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'node_modules_bundle'
+                }
+            }
+            //#[Strategy #3]: Putting node_modules into its Own Bundle.
+            // cacheGroups: {
+            //     node_modules: {
+            //         test: /[\\/]node_modules[\\/]/,
+            //         //name: 'node_modules'
+            //         name(module) {
+            //             const packageName = module.context.match(
+            //                 /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+            //             )[1]
+            //             return packageName
+            //         }
+            //     }
+            // }
+            // name(module, chunks, cacheGroupKey) {
+            //     const filePathAsArray = module.identifier().split('/')
+            //     return filePathAsArray[filePathAsArray.length - 1]
+            // },
+
+            //[Strategy #1]: Extracting Heavy Dependencies into Seperate bundles
+            // cacheGroups: {
+            //     lodash_es: {
+            //         test: /[\\/]src[\\/]js[\\/]event-handlers.js[\\/]/,
+            //         chunks: 'initial',
+            //         name: "lodash_es"
+            //     },
+            //     core_js: {
+            //         test: /[\\/]node_modules[\\/]core-js[\\/]/,
+            //         chunks: 'initial',
+            //         name: 'core_js'
+            //     },
+            //     emotion: {
+            //         test: /[\\/]node_modules[\\/][\\@]emotion[\\/]/,
+            //         chunks: 'async',
+            //         name: "emotion"
+            //     },
+            // }
+        },
     },
     module: {
         rules: [
@@ -101,15 +165,16 @@ module.exports = merge(common, {
                 ]
             },
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.scss$/i,
                 use: [
                     // Creates `style` nodes from JS strings
                     MiniCssExtractPlugin.loader,
                     // Translates CSS into CommonJS
                     "css-loader",
+                    // Work with autoprefixer
                     "postcss-loader",
                     // Compiles Sass to CSS
-                    "sass-loader",
+                    "sass-loader"
                 ]
 
             },
@@ -145,8 +210,9 @@ module.exports = merge(common, {
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash:12].css'
         }),
-        new PurgeCSSPlugin({
-            paths: glob.sync(`${path.join(__dirname)}/src/**/*`, { nodir: true })
-        })
+        //[TODO]: check why add this will break the global styles in using, it is supposted to only purse un-used css.
+        // new PurgeCSSPlugin({
+        //     paths: glob.sync(`${path.join(__dirname)}/src/**/*`, { nodir: true })
+        // })
     ]
 })
