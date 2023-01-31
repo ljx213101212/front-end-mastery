@@ -9,6 +9,7 @@ const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = merge(common, {
     mode: 'production',
+    devtool: 'source-map',
     output: {
         filename: 'js/[name].[contenthash:12].js',
     },
@@ -101,15 +102,16 @@ module.exports = merge(common, {
                 ]
             },
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.scss$/i,
                 use: [
                     // Creates `style` nodes from JS strings
                     MiniCssExtractPlugin.loader,
                     // Translates CSS into CommonJS
                     "css-loader",
+                    // Work with autoprefixer
                     "postcss-loader",
                     // Compiles Sass to CSS
-                    "sass-loader",
+                    "sass-loader"
                 ]
 
             },

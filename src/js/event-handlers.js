@@ -1,5 +1,6 @@
 import { renderTodos, clearNewTodoInput, getTodoId, showNotification } from "./ui"
 import { getAllTodos, addTodo, removeTodo, updateTodo } from "./data";
+import { trim, captalize } from "./helpers";
 
 export function onLoadEventHandler() {
     renderTodos(getAllTodos())
@@ -7,6 +8,9 @@ export function onLoadEventHandler() {
 
 export function newTodoEventHandler(event) {
     let text = event.target.value
+    //Using Experimenal JavaScript Features that will handled by bable plugin.
+    //@babel/plugin-proposal-pipeline-operator
+    text = text |> trim |> captalize
     addTodo({
         id: Date.now(),
         text: text,

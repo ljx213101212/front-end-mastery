@@ -63,7 +63,6 @@ npm install copy-webpack-plugin --save-dev
 
 - WEBP
 
-
 ## Browser Compatibility
 
 - PostCss
@@ -72,6 +71,45 @@ npm install copy-webpack-plugin --save-dev
 https://caniuse.com/
 
 npm install --save-dev autoprefixer postcss-loader
+```
+
+- browserslist
+
+```
+https://github.com/browserslist/browserslist
+```
+
+- babel
+
+```
+npm install -D babel-loader @babel/core @babel/preset-env
+
+npm install -D cross-env
+
+npm install --save lodash
+
+npm i core-js
+
+npm install -D @babel/plugin-proposal-pipeline-operator
+
+npm install typescript --save-dev
+npm install -D @babel/preset-typescript
+```
+
+## Boost developer experience
+
+- Source Maps
+
+```
+javascript and css
+https://webpack.js.org/configuration/devtool/
+
+css in js
+
+npm i @emotion/css
+npm install --save styled-components
+npm install --save-dev @emotion/babel-plugin
+npm install --save-dev babel-plugin-styled-components
 ```
 
 ## Important Configs
