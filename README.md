@@ -22,6 +22,21 @@ Webpack loads import "./src/index.css" then paste <style>{{content}}</style> int
 
 ```
 
+## Analyzing Webpack bundle for production
+
+```
+npm install --save-dev webpack-bundle-analyzer
+
+```
+
+- Bundle Spliting
+
+```
+To keep the library code chunck in the individual bundle and cache into browser. Since 99% future commit won't touch library code (unless package update), so the browser only need to update business logic bundle instead of library bundle to boost up the performance.
+
+Strategy #1: Extracting 
+```
+
 ## Opmizing Bundle for production
 
 - Case 1: imported larget util tooks like loadash, in normal project 80%+ util methods are not utilised.
