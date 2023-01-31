@@ -22,6 +22,14 @@ Webpack loads import "./src/index.css" then paste <style>{{content}}</style> int
 
 ```
 
+## Opmizing Bundle for production
+
+- Case 1: imported larget util tooks like loadash, in normal project 80%+ util methods are not utilised.
+
+```
+https://www.npmjs.com/package/lodash-es
+```
+
 ## Optimizing CSS for production
 
 - cssnano

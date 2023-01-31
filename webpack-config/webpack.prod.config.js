@@ -14,6 +14,7 @@ module.exports = merge(common, {
         filename: 'js/[name].[contenthash:12].js',
     },
     optimization: {
+        usedExports: true,
         minimize: true,
         minimizer: [
             '...',

@@ -4,6 +4,6 @@ export function trim(value: string ): string {
         .replace(/\s{2,}/g, ' ');
 }
 
-export function captalize(value:string): string {
+export function capitalize(value:string): string {
     return value.toUpperCase();
 }
