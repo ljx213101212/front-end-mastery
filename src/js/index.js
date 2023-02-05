@@ -1,4 +1,4 @@
-import { newTodoEventHandler, removeTodoEventHandler, toggleTodoEventListener, onLoadEventHandler } from "./event-handlers";
+import { newTodoEventHandler, removeTodoEventHandler, toggleTodoEventListener, onLoadEventHandler, confirmRemoveEventHandler, cancelRemoveEventHandler } from "./event-handlers";
 import "../styles/index.scss"
 
 
@@ -14,5 +14,11 @@ document.addEventListener('click', function (event) {
     }
     if (event.target.classList.contains('real-checkbox')) {
         toggleTodoEventListener(event)
+    }
+    if (event.target.id === "modal-delete-button") {
+        confirmRemoveEventHandler(event)
+    }
+    if (event.target.id === "modal-cancel-button") {
+        cancelRemoveEventHandler(event)
     }
 })

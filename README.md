@@ -34,7 +34,10 @@ npm install --save-dev webpack-bundle-analyzer
 ```
 To keep the library code chunck in the individual bundle and cache into browser. Since 99% future commit won't touch library code (unless package update), so the browser only need to update business logic bundle instead of library bundle to boost up the performance.
 
-Strategy #1: Extracting 
+Strategy #1: Extracting Heavy Dependencies into Seperate bundles.
+Strategy #2: Specifying Criteria for code spliting.
+Strategy #3: Putting node_modules into its Own Bundle.
+Strategy #4: Creating a JS bundle for each dependency.
 ```
 
 ## Opmizing Bundle for production
@@ -44,6 +47,11 @@ Strategy #1: Extracting
 ```
 https://www.npmjs.com/package/lodash-es
 ```
+
+## Optimizing Javascript for production
+
+- Dynamic import
+- Lazy loading
 
 ## Optimizing CSS for production
 

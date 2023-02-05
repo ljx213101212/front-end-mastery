@@ -78,24 +78,47 @@ module.exports = merge(common, {
             //[Strategy #2]: Specifying Criteria for code spliting.
             chunks: 'all',
             maxSize: Infinity,
-            minSize: 0,
+            minSize: 2000,
             //[Strategy #4]: Creating a JS bundle for each dependency.
             cacheGroups: {
+                // Make jquery and bootstrap into lazy loading(async)
+                // jquery: {
+                //     test: /[\\/]node_modules[\\/]jquery[\\/]/,
+                //     name: 'jquery',
+                //     priority: 2
+                // },
+                // bootstrap: {
+                //     test: /[\\/]node_modules[\\/]bootstrap[\\/]/,
+                //     name: 'bootstrap',
+                //     priority: 2
+                // },
                 lodash: {
                     test: /[\\/]node_modules[\\/]lodash-es[\\/]/,
-                    name: 'lodash-es'
+                    name: 'lodash-es',
+                    //to make the bundle seperate (if not will be merge into node_modules_bundle)
+                    priority: 2
                 },
                 emotion: {
                     test: /[\\/]node_modules[\\/]@emotion[\\/]/,
-                    name: 'emotion'
+                    name: 'emotion',
+                    priority: 1
                 },
                 corejs: {
                     test: /[\\/]node_modules[\\/]core-js[\\/]/,
-                    name: 'corejs'
+                    name: 'corejs',
+                    priority: 1
                 },
                 node_modules: {
                     test: /[\\/]node_modules[\\/]/,
-                    name: 'node_modules_bundle'
+                    name: 'node_modules_bundle',
+                    chunks: 'initial'
+                },
+                async: {
+                    test: /[\\/]node_modules[\\/]/,
+                    chunks: 'async',
+                    name(module, chunks) {
+                        return chunks.map(chunk => chunk.name).join('-')
+                    }
                 }
             }
             //#[Strategy #3]: Putting node_modules into its Own Bundle.
