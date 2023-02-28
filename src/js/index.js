@@ -1,6 +1,9 @@
 import { newTodoEventHandler, removeTodoEventHandler, toggleTodoEventListener, onLoadEventHandler, confirmRemoveEventHandler, cancelRemoveEventHandler } from "./event-handlers";
 import "../styles/index.scss"
 
+export function renderApp() {
+    onLoadEventHandler();
+}
 
 window.addEventListener('load', onLoadEventHandler)
 document.addEventListener('change', function (event) {

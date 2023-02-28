@@ -3,15 +3,17 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const config = {
-    entry: './src/js/index.js',
-    output: {
-        path: path.resolve(__dirname, '../dist'),
-        // clean: {
-        //     dry: true,
-        //     keep: /\.css/
-        // }
-        clean: true
-    },
+    //entry: './src/js/index.js',
+    // output: {
+    //     //path: path.resolve(__dirname, '../dist'),
+    //     // clean: {
+    //     //     dry: true,
+    //     //     keep: /\.css/
+    //     // }
+    //     //clean: true
+    //     filename: 'js/[name].[contenthash:12].js',
+    //     publicPath: '/static/'
+    // },
     resolve: {
         extensions: ['.ts', '.js']
     },
