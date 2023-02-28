@@ -1,16 +1,22 @@
 const common = require("./webpack.common.config.js")
 const { merge } = require("webpack-merge")
 const path = require('path')
+const webpack = require("webpack")
 
 module.exports = merge(common, {
     mode: 'development',
+    entry: './src/js/index-dev.js',
+    output: {
+        filename: 'bundle.js',
+        publicPath: '/static/'
+    },
     optimization: {
         usedExports: true,
     },
     devtool: 'eval-source-map',
-    output: {
-        filename: '[name].[contenthash:12].js',
-    },
+    // output: {
+    //     filename: '[name].[contenthash:12].js',
+    // },
     devServer: {
         port: 9000,
         static: {
@@ -18,7 +24,7 @@ module.exports = merge(common, {
         },
         devMiddleware: {
             index: 'index.html',
-            writeToDisk: false
+            writeToDisk: true
         },
         client: {
             overlay: true
@@ -79,4 +85,7 @@ module.exports = merge(common, {
             }
         ]
     },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ]
 })
