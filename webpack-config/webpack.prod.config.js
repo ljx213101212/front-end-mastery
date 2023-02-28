@@ -6,6 +6,7 @@ const path = require('path')
 const glob = require('glob')
 const { PurgeCSSPlugin } = require("purgecss-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = merge(common, {
     mode: 'production',
@@ -238,6 +239,18 @@ module.exports = merge(common, {
         //[TODO]: check why add this will break the global styles in using, it is supposted to only purse un-used css.
         // new PurgeCSSPlugin({
         //     paths: glob.sync(`${path.join(__dirname)}/src/**/*`, { nodir: true })
-        // })
-    ]
+        // }),
+        new CompressionPlugin({
+            filename: '[path][base].gz',
+            algorithm: "gzip",
+            test: /\.(js|css)$/,
+        }),
+        new CompressionPlugin({
+            filename: '[path][base].br',
+            algorithm: "brotliCompress",
+            test: /\.(js|css)$/,
+            compressionOptions: { level: 11 }
+        }),
+    ],
+
 })

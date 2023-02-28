@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const path = require('path')
+const gzip = require("express-static-gzip");
 
 console.log("[JX TEST] - node env", process.env.NODE_ENV);
 
@@ -24,7 +25,10 @@ app.get('/', function (req, res) {
     res.sendFile(absolutePathToHtmlFile);
 })
 
-app.use('/static', express.static(path.resolve(__dirname, '../dist')))
+app.use('/static', gzip(path.resolve(__dirname, '../dist'), {
+    enableBrotli: true,
+    orderPreference: ['br', 'gz']
+}))
 
 app.listen(3000, function () {
     console.log('Application is running on http://localhost:3000')
