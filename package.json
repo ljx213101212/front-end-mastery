@@ -11,7 +11,8 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.prod.config.js",
     "build:dev": "cross-env NODE_ENV=dev webpack --config webpack-config/webpack.dev.config.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.prod.config.js",
-    "bundle-analyzer": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.analyze.config.js"
+    "bundle-analyzer": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.analyze.config.js",
+    "build:helloworld": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.helloworld.config.js"
   },
   "repository": {
     "type": "git",
