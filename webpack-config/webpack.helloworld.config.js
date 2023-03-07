@@ -2,10 +2,28 @@
 const path = require('path');
 
 module.exports = {
-    entry: './geektime/index.js',
+    entry: {
+        index: './geektime/index.js',
+        search: './geektime/search.js',
+    },
     output: {
         path: path.join(__dirname, '../geekdist'),
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
-    mode: 'production'
+    mode: 'production',
+    module: {
+        rules: [
+            {
+                test: /.js$/,
+                use: 'babel-loader'
+            },
+            {
+                test: /.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            }
+        ]
+    }
 }
