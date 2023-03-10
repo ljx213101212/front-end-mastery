@@ -19,10 +19,18 @@ module.exports = {
             },
             {
                 test: /.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
+                use: [//链式调用, 从数组最右方直到最左方
+                    'style-loader',//2
+                    'css-loader'//1
                 ]
+            },
+            {
+                test: /.(png|jpg|gif|jpeg)$/,
+                use: 'file-loader'
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: ['file-loader']
             }
         ]
     }
