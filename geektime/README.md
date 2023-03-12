@@ -66,3 +66,30 @@ Why do we need constructor tool?
 
 - css-loader: loading .css file,
 - style-loader: put <style> tag into head
+
+## Hot load
+
+- webpack-dev-server
+- webpack-dev-middleware
+
+> Source code learning
+
+1. Webpack compile
+
+- compile js into bundle
+
+2. HMR Server
+
+- output hot load file to HMR Runtime
+
+3. Bundle server
+
+- provide file to be accessed by browser.
+
+4. HMR Runtime
+
+- Will be injected into browser and update file change.
+
+5. bundle.js
+
+- the output bundled file

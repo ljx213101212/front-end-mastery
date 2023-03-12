@@ -10,7 +10,7 @@ module.exports = {
         path: path.join(__dirname, '../geekdist'),
         filename: '[name].js'
     },
-    mode: 'production',
+    mode: 'development',
     module: {
         rules: [
             {
@@ -40,5 +40,9 @@ module.exports = {
                 use: ['file-loader']
             }
         ]
+    },
+    devServer: {
+        static: './geekdist',
+        hot: true
     }
 }
