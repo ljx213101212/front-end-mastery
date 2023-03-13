@@ -1,4 +1,6 @@
 'use strict'
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = {
@@ -8,7 +10,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, '../geekdist'),
-        filename: '[name].js'
+        filename: '[name]_[chunkhash:8].js'
     },
     mode: 'production',
     module: {
@@ -20,7 +22,8 @@ module.exports = {
             {
                 test: /.css$/,
                 use: [//链式调用, 从数组最右方直到最左方
-                    'style-loader',//2
+                    // 'style-loader',//2  与 MiniCssExtractPlugin 工作原理相似，因此冲突。
+                    MiniCssExtractPlugin.loader,
                     'css-loader'//1
                 ]
             },
@@ -30,7 +33,9 @@ module.exports = {
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 10240
+                            limit: 10240,
+                            //[src]: replacePathVariables
+                            name: '[name]_[hash:8].[ext]'
                         }
                     }
                 ]
@@ -39,6 +44,21 @@ module.exports = {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: ['file-loader']
             }
+        ]
+    },
+    plugins: [
+        //和style loader的会产生冲突
+        new MiniCssExtractPlugin({
+            filename: '[name]_[contenthash:8].css'
+        })
+    ],
+    optimization: {
+        minimize: true,
+        minimizer: [
+            //进行css压缩
+            new CssMinimizerPlugin({
+                test: /\**\.css$/i,
+            })
         ]
     }
 }

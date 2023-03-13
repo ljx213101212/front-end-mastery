@@ -14,7 +14,8 @@
     "bundle-analyzer": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.analyze.config.js",
     "build:helloworld": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.helloworld.config.js",
     "build:helloworld:watch": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.helloworld.config.js --watch",
-    "build:helloworld:dev": "webpack-dev-server --config webpack-config/webpack.helloworld.dev.confg.js --open"
+    "build:helloworld:dev": "webpack-dev-server --config webpack-config/webpack.helloworld.dev.confg.js --open",
+    "build:helloworld:clean": "find geekdist -type f ! -name '*.html'  -delete"
   },
   "repository": {
     "type": "git",
