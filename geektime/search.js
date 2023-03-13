@@ -6,7 +6,7 @@ import "./search.css";
 import logo from "./assets/darts.jpg";
 
 const Search = () => {
-    return <div className='search-text'>Search Textsss
+    return <div className='search-text'>Search Textsss test
         <img src={logo} className='search-image' /></div>
 }
 

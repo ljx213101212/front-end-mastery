@@ -22,6 +22,19 @@ Why do we need constructor tool?
 > common loaders
 > A chain is executed in **reverse order**
 
+```
+Q: Why it loaders has orders?
+
+A: 
+{
+    test: /\.css$/,
+    loaders: ['loaderOne', 'loaderTwo', 'loaderThree']
+}
+loaderOne(loaderTwo(loaderThree(somefile.css)))
+
+https://github.com/webpack/loader-runner/blob/dac81a7f171993e6a1aa15bfd86b115db197d75d/lib/LoaderRunner.js#L231
+```
+
 - babel-loader
   - trasform different JS syntax , from ES6 to ES7 etc...
 - css-loader

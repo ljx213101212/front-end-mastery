@@ -1,7 +1,9 @@
 'use strict'
 const path = require('path');
+const { merge } = require("webpack-merge")
+const common = require('./webpack.geektime.common.config')
 
-module.exports = {
+module.exports = merge(common, {
     entry: {
         index: './geektime/index.js',
         search: './geektime/search.js',
@@ -45,4 +47,4 @@ module.exports = {
         static: './geekdist',
         hot: true
     }
-}
+});

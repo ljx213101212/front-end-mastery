@@ -12,10 +12,10 @@
     "build:dev": "cross-env NODE_ENV=dev webpack --config webpack-config/webpack.dev.config.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.prod.config.js",
     "bundle-analyzer": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.analyze.config.js",
-    "build:helloworld": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.helloworld.config.js",
-    "build:helloworld:watch": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.helloworld.config.js --watch",
-    "build:helloworld:dev": "webpack-dev-server --config webpack-config/webpack.helloworld.dev.confg.js --open",
-    "build:helloworld:clean": "find geekdist -type f ! -name '*.html'  -delete"
+    "build:geektime": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.geektime.config.js",
+    "build:geektime:watch": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.geektime.config.js --watch",
+    "build:geektime:dev": "webpack-dev-server --config webpack-config/webpack.geektime.dev.confg.js --open",
+    "build:geektime:clean": "find geekdist -type f ! -name '*.html'  -delete"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "@emotion/babel-plugin": "^11.10.5",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
     "compression-webpack-plugin": "^10.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "cross-env": "^7.0.3",
