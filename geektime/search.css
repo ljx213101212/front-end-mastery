@@ -1,3 +1,7 @@
+html {
+    font-size: 16px;
+}
+
 @font-face {
     font-family: 'Dosis';
     src: url('./assets/Dosis-Medium.ttf')

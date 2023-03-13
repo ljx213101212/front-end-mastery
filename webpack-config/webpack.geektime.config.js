@@ -28,7 +28,14 @@ module.exports = merge(common, {
                     MiniCssExtractPlugin.loader,
                     'css-loader',//1,
                     //https://stackoverflow.com/questions/32234329/what-is-the-loader-order-for-webpack
-                    // "postcss-loader"
+                    "postcss-loader",
+                    {
+                        //讲px替换为rem
+                        loader: 'px2rem-loader',
+                        options: {
+                            remUnit: 16
+                        }
+                    }
                 ]
             },
             {

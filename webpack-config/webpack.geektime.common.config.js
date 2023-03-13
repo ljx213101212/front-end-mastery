@@ -2,13 +2,13 @@
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = {
     entry: {
-        index: './geektime/index.js',
-        search: './geektime/search.js',
+        index: './geektime/index.js'
     },
     output: {
         path: path.join(__dirname, '../geekdist'),
@@ -21,6 +21,11 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name]_[contenthash:8].css'
         }),
+        // new CopyWebpackPlugin({
+        //     patterns: [{
+        //         from: 'geektime/meta.html'
+        //     }]
+        // }),
         //保证每次build都可以清空原先的output文件夹
         new CleanWebpackPlugin()
 

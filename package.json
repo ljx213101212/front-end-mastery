@@ -59,6 +59,8 @@
     "npm": "^9.3.1",
     "postcss-loader": "^7.0.2",
     "purgecss-webpack-plugin": "^5.0.0",
+    "px2rem-loader": "^0.1.9",
+    "raw-loader": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.57.1",
@@ -82,6 +84,7 @@
     "express": "^4.18.2",
     "express-static-gzip": "^2.1.7",
     "jquery": "^3.6.3",
+    "lib-flexible": "^0.3.2",
     "lodash-es": "^4.17.21"
   }
 }
