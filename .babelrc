@@ -1,6 +1,7 @@
 {
     "presets": [
-        "@babel/preset-typescript"
+        "@babel/preset-typescript",
+        "@babel/preset-react"
     ],
     "plugins": [
         [
@@ -8,7 +9,8 @@
             {
                 "proposal": "minimal"
             }
-        ]
+        ],
+        "@babel/proposal-class-properties"
     ],
     "env": {
         "production": {
