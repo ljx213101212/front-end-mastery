@@ -57,15 +57,7 @@ module.exports = merge(common, {
             }
         ]
     },
-    plugins: [
-        //和style loader的会产生冲突
-        new MiniCssExtractPlugin({
-            filename: '[name]_[contenthash:8].css'
-        }),
-        //保证每次build都可以清空原先的output文件夹
-        new CleanWebpackPlugin()
-
-    ],
+    //plugin:{} was moved to common
     optimization: {
         minimize: true,
         minimizer: [
@@ -73,21 +65,6 @@ module.exports = merge(common, {
             new CssMinimizerPlugin({
                 test: /\**\.css$/i,
             }),
-            //自动生成以给定模版为基础的html文件来承载
-            new HtmlWebpackPlugin({
-                template: path.join(__dirname, '../geektime/index.html'),
-                filename: 'index.html',
-                chunks: ['index'],
-                inject: true,
-                minify: {
-                    html5: true,
-                    collapseWhitespace: true,
-                    preserveLineBreaks: false,
-                    minifyCSS: true,
-                    minifyJS: true,
-                    removeComments: false
-                }
-            })
         ]
     }
 });

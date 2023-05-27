@@ -4,12 +4,8 @@ const { merge } = require("webpack-merge")
 const common = require('./webpack.geektime.common.config')
 
 module.exports = merge(common, {
-    entry: {
-        index: './geektime/index.js',
-        search: './geektime/search.js',
-    },
     output: {
-        path: path.join(__dirname, '../geekdist'),
+        path: path.join(__dirname, '../geekdevdist'),
         filename: '[name].js'
     },
     mode: 'development',
@@ -44,7 +40,9 @@ module.exports = merge(common, {
         ]
     },
     devServer: {
-        static: './geekdist',
-        hot: true
+        static: {
+            directory: path.join(__dirname, "../geekdevdist")
+        },
+        port: 9001,
     }
 });

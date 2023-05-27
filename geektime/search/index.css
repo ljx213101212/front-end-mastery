@@ -4,7 +4,7 @@ html {
 
 @font-face {
     font-family: 'Dosis';
-    src: url('./assets/Dosis-Medium.ttf')
+    src: url('./../assets/Dosis-Medium.ttf')
 }
 
 .search-text {
@@ -16,5 +16,4 @@ html {
     display: flex;
     max-width: 200px;
 }
-
 

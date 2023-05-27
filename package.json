@@ -14,7 +14,8 @@
     "bundle-analyzer": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.analyze.config.js",
     "build:geektime": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.geektime.config.js",
     "build:geektime:watch": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.geektime.config.js --watch",
-    "build:geektime:dev": "webpack-dev-server --config webpack-config/webpack.geektime.dev.confg.js --open",
+    "build:geektime:dev": "cross-env NODE_ENV=dev webpack --config webpack-config/webpack.geektime.dev.confg.js",
+    "build:geektime:serve": "webpack serve --config webpack-config/webpack.geektime.dev.confg.js",
     "build:geektime:clean": "find geekdist -type f ! -name '*.html'  -delete"
   },
   "repository": {
@@ -43,6 +44,7 @@
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.2.2",
     "file-loader": "^6.2.0",
+    "glob": "^10.2.6",
     "html-loader": "^4.1.0",
     "html-webpack-plugin": "^5.5.0",
     "image-minimizer-webpack-plugin": "^3.8.1",
@@ -84,6 +86,7 @@
     "express": "^4.18.2",
     "express-static-gzip": "^2.1.7",
     "jquery": "^3.6.3",
+    "large-number": "^1.0.1",
     "lib-flexible": "^0.3.2",
     "lodash-es": "^4.17.21"
   }
