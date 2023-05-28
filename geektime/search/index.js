@@ -6,6 +6,8 @@ import associateJS from 'raw-loader!./raw_js.js';
 import logo from '../assets/darts.jpg';
 // 用来测试公共资源的splitchunks
 import { common } from '../common';
+// 加载自己打包的大整数加法应用
+import {largeNumberAdd} from 'large-number-ljx';
 
 function Search() {
   const [dynamicComponent, setDynamicComponent] = useState(<></>);
@@ -24,11 +26,13 @@ function Search() {
     const text = await import('./text.js');
     setDynamicComponent(text.default);
   };
+
   return (
     <div className="search-text">
-      Search Textsss test
+      Click the image to load dynamic component
       <img src={logo} className="search-image" onClick={() => dynamicLoadComponent()} />
       {dynamicComponent}
+      {largeNumberAdd("999", "11")} {"is expected equals to 1010"}
     </div>
   );
 }

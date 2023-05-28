@@ -1,6 +1,11 @@
 {
-    "eslint.workingDirectories": [
-        "geektime",
-        "src"
-    ]
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "eslint.enable": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

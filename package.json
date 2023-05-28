@@ -1,7 +1,6 @@
 {
   "name": "webpack5-2022",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=dev node src/server.js",
@@ -85,8 +84,6 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@emotion/css": "^11.10.5",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
@@ -95,7 +92,10 @@
     "express-static-gzip": "^2.1.7",
     "jquery": "^3.6.3",
     "large-number": "^1.0.1",
+    "large-number-ljx": "^1.0.6",
     "lib-flexible": "^0.3.2",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

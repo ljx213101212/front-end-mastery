@@ -1,6 +1,0 @@
-{
-    "ignorePatterns": ["webpack-config/*.js"],
-    "rules": {
-        "import/prefer-default-export": "off"
-    }
-}
