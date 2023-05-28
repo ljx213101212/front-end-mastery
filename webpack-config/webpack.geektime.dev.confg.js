@@ -1,13 +1,11 @@
 'use strict'
 const path = require('path');
+const { merge } = require("webpack-merge")
+const common = require('./webpack.geektime.common.config')
 
-module.exports = {
-    entry: {
-        index: './geektime/index.js',
-        search: './geektime/search.js',
-    },
+module.exports = merge(common, {
     output: {
-        path: path.join(__dirname, '../geekdist'),
+        path: path.join(__dirname, '../geekdevdist'),
         filename: '[name].js'
     },
     mode: 'development',
@@ -42,7 +40,12 @@ module.exports = {
         ]
     },
     devServer: {
-        static: './geekdist',
-        hot: true
-    }
-}
+        static: {
+            directory: path.join(__dirname, "../geekdevdist")
+        },
+        port: 9001,
+    },
+    //引入source map
+    //https://webpack.js.org/configuration/devtool/
+    devtool: 'source-map',
+});

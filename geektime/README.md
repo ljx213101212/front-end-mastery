@@ -22,6 +22,19 @@ Why do we need constructor tool?
 > common loaders
 > A chain is executed in **reverse order**
 
+```
+Q: Why it loaders has orders?
+
+A:
+{
+    test: /\.css$/,
+    loaders: ['loaderOne', 'loaderTwo', 'loaderThree']
+}
+loaderOne(loaderTwo(loaderThree(somefile.css)))
+
+https://github.com/webpack/loader-runner/blob/dac81a7f171993e6a1aa15bfd86b115db197d75d/lib/LoaderRunner.js#L231
+```
+
 - babel-loader
   - trasform different JS syntax , from ES6 to ES7 etc...
 - css-loader
@@ -42,19 +55,19 @@ Why do we need constructor tool?
 > common plugins
 
 - CommonsChunkPlugin
-- Extract same code blocks from chunk into common code
+  - Extract same code blocks from chunk into common code
 - CleanWebpackPlugin
-- Clean the index
+  - Clean the index
 - ExtractTextWebpackPlugin
-- Extract css from bundle into independent files
+  - Extract css from bundle into independent files
 - CopyWebpackPlugin
-- copy file or folder into path directory
+  - copy file or folder into path directory
 - HtmlWebpackPlugin
-- create html file to hold the output bundle
+  - create html file to hold the output bundle
 - UglifyjsWebpackPlugin
-- Compress JS
+  - Compress JS
 - ZipWebpackPlugin
-- Generate a zip package from the bundle resource.
+  - Generate a zip package from the bundle resource.
 
 ## Mode
 
@@ -93,3 +106,37 @@ Why do we need constructor tool?
 5. bundle.js
 
 - the output bundled file
+
+# Advanced Topic
+
+## 资源内联
+
+### 意义
+
+- 代码层面
+
+  - 页面框架的初始化脚本
+  - 上报相关打点 (https://juejin.cn/post/7047710777507053582)
+  - css 内联避免页面闪动
+
+- 请求层面： 减少 HTTP 网络请求数
+  - 小图片或者字体内联(url-loader)
+
+### HTML 和 JS 内联
+
+- raw-loader 内联 html
+
+```
+<script> ${require('raw-loader!babel-loader!./meta.html)}></script>
+```
+
+- raw-loader 内联 JS
+
+```
+<script>${require('raw-loader!babel-loader!../node_modules/lib-flexible')}</script>
+```
+
+### Treeshaking & Scope Hoisting
+```
+Supported by default
+```

@@ -1,6 +1,10 @@
+html {
+    font-size: 16px;
+}
+
 @font-face {
     font-family: 'Dosis';
-    src: url('./assets/Dosis-Medium.ttf')
+    src: url('./../assets/Dosis-Medium.ttf')
 }
 
 .search-text {
@@ -9,7 +13,7 @@
     font-family: 'Dosis';
 }
 .search-image {
+    display: flex;
     max-width: 200px;
 }
-
 
