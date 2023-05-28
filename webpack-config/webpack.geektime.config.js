@@ -65,6 +65,27 @@ module.exports = merge(common, {
             new CssMinimizerPlugin({
                 test: /\**\.css$/i,
             }),
-        ]
+        ],
+        splitChunks: {
+            //超过此大小的chunks才split
+            minSize: 0,
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]geektime[\\/](common)[\\/]/,
+                    name: 'commons',
+                    chunks: 'all',
+                    //最小引用次数
+                    minChunks: 1
+                },
+                //split react vendor, so it can be cached by user's browser.
+                reactVendor: {
+                    test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
+                    name: 'vendor-react',
+                    chunks: 'all',
+                    //最小引用次数
+                    minChunks: 1
+                },
+            }
+        }
     }
 });

@@ -1,1 +1,1 @@
-console.log("hello world: inline js successfully");
+console.log('hello world: inline js successfully');

@@ -16,7 +16,8 @@
     "build:geektime:watch": "cross-env NODE_ENV=production webpack --config webpack-config/webpack.geektime.config.js --watch",
     "build:geektime:dev": "cross-env NODE_ENV=dev webpack --config webpack-config/webpack.geektime.dev.confg.js",
     "build:geektime:serve": "webpack serve --config webpack-config/webpack.geektime.dev.confg.js",
-    "build:geektime:clean": "find geekdist -type f ! -name '*.html'  -delete"
+    "build:geektime:clean": "find geekdist -type f ! -name '*.html'  -delete",
+    "lint": "eslint --fix geektime"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "@babel/preset-typescript": "^7.18.6",
     "@emotion/babel-plugin": "^11.10.5",
     "autoprefixer": "^10.4.13",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0",
     "compression-webpack-plugin": "^10.0.0",
@@ -43,6 +45,12 @@
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.2.2",
+    "eslint": "^8.41.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "file-loader": "^6.2.0",
     "glob": "^10.2.6",
     "html-loader": "^4.1.0",
@@ -63,8 +71,6 @@
     "purgecss-webpack-plugin": "^5.0.0",
     "px2rem-loader": "^0.1.9",
     "raw-loader": "^4.0.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
@@ -79,6 +85,8 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "@emotion/css": "^11.10.5",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",

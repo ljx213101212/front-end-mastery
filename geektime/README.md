@@ -135,3 +135,8 @@ https://github.com/webpack/loader-runner/blob/dac81a7f171993e6a1aa15bfd86b115db1
 ```
 <script>${require('raw-loader!babel-loader!../node_modules/lib-flexible')}</script>
 ```
+
+### Treeshaking & Scope Hoisting
+```
+Supported by default
+```

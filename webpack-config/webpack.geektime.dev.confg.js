@@ -44,5 +44,8 @@ module.exports = merge(common, {
             directory: path.join(__dirname, "../geekdevdist")
         },
         port: 9001,
-    }
+    },
+    //引入source map
+    //https://webpack.js.org/configuration/devtool/
+    devtool: 'source-map',
 });
