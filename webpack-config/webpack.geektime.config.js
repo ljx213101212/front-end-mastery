@@ -87,5 +87,8 @@ module.exports = merge(common, {
                 },
             }
         }
-    }
+    },
+    //Found there is no output when no errors occured even no success message.
+    //friendly-errors-webpack-plugin can help with this.
+    stats: 'errors-only'
 });
