@@ -1,4 +1,9 @@
 # webpack5 - 2022
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ljx213101212/webpack5-optimizing-for-production/tree/master/LICENSE)
+[![npm version](https://img.shields.io/npm/v/large-number-ljx)](https://www.npmjs.com/package/large-number-ljx)
+
+[![Travis Status](https://app.travis-ci.com/ljx213101212/webpack5-optimizing-for-production.svg?branch=master)](https://app.travis-ci.com/github/ljx213101212/webpack5-optimizing-for-production)
+https://app.travis-ci.com/ljx213101212/webpack5-optimizing-for-production.svg?branch=master
 
 ## Installation
 

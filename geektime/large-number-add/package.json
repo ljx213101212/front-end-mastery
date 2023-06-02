@@ -1,6 +1,6 @@
 {
   "name": "large-number-ljx",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "大整数加法打包",
   "main": "index.js",
   "scripts": {
@@ -8,11 +8,15 @@
     "build": "webpack",
     "pub": "webpack && npm publish"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "ljx213101212",
+  "license": "MIT",
   "devDependencies": {
     "terser-webpack-plugin": "^5.3.9",
     "webpack": "^5.84.1",
     "webpack-cli": "^5.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ljx213101212/webpack5-optimizing-for-production/tree/master/geektime/large-number-add"
   }
 }
