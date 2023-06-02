@@ -1,13 +1,20 @@
 language: node_js
-sudo: false
+sudo: true
 cache:
   apt: true
   directories: 
     - node_modules
-node_js: stable 
+
+node_js: 
+  - "14"
 
 install:
-  - npm install -D 
+  - sudo apt install nasm
+  - npm install 
 
 script:
   - npm test
+
+branches:
+  only:
+  - master
