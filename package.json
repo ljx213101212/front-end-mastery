@@ -19,7 +19,7 @@
     "build:geektime:clean": "find geekdist -type f ! -name '*.html'  -delete",
     "lint": "eslint --fix geektime",
     "test:debug": "mocha geektime/test/smoke/css-js-test.js",
-    "test:smoke": "mocha geektime/test/smoke/index.js"
+    "test": "mocha geektime/test/smoke/index.js"
   },
   "repository": {
     "type": "git",
