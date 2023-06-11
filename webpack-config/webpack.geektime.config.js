@@ -5,9 +5,12 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
 const path = require('path');
 
-module.exports = merge(common, {
+const smp = new SpeedMeasureWebpackPlugin();
+
+module.exports = merge(common, smp.wrap({
     output: {
         path: path.join(__dirname, '../geekdist'),
         //https://medium.com/@web_developer/hash-vs-chunkhash-vs-contenthash-e94d38a32208
@@ -90,5 +93,5 @@ module.exports = merge(common, {
     },
     //Found there is no output when no errors occured even no success message.
     //friendly-errors-webpack-plugin can help with this.
-    stats: 'errors-only'
-});
+    stats: 'normal'
+}));
