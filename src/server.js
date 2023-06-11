@@ -3,8 +3,6 @@ const app = express()
 const path = require('path')
 const gzip = require("express-static-gzip");
 
-console.log("[JX TEST] - node env", process.env.NODE_ENV);
-
 if (process.env.NODE_ENV === 'dev') {
     console.log('development mode')
     const webpackDevMiddleware = require('webpack-dev-middleware')

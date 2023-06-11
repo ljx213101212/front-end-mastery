@@ -27,7 +27,6 @@ const server = (port) => {
 server(process.env.PORT || 3000);
 
 const renderMarkup = (str) => {
-    console.log("[JX TEST] - renderMarkup", str);
     const dataStr = JSON.stringify(data);
     return template.replace('<!--INITIAL_DATA_PLACEHOLDER-->', `<script>window.__initial_data=${dataStr}</script>`).replace('<!--HTML_PLACEHOLDER-->', str);
 }

@@ -9,8 +9,6 @@ describe('Checking generated css js files', () => {
     ]
     it('should generate css js files', (done) => {
         const files = glob.sync(cssJSFiles);
-
-        console.log("[JX TEST] - files", files);
         if (files.length === cssJSFiles.length) {
             done();
         } else {
