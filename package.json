@@ -18,6 +18,7 @@
     "build:geektime:serve": "webpack serve --config webpack-config/webpack.geektime.dev.confg.js",
     "build:geektime:ssr": "webpack --config webpack-config/webpack.geektime.ssr.js",
     "build:geektime:clean": "find geekdist -type f ! -name '*.html'  -delete",
+    "build:geektime:dll": "webpack --config webpack-config/webpack.geektime.dll.config.js",
     "lint": "eslint --fix geektime",
     "test:debug": "mocha geektime/test/smoke/css-js-test.js",
     "test": "mocha geektime/test/smoke/index.js"
