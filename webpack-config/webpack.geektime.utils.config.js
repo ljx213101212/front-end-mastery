@@ -7,7 +7,12 @@ const setMPA = () => {
     const entry = {};
     const htmlWebpackPlugins = [];
 
-    const entryFiles = glob.sync([path.join(process.cwd(), './geektime/index/index.js'), path.join(process.cwd(), './geektime/search/index.js')]);
+    const cwd = process.cwd(); 
+    const entryFiles = [
+        ...glob.sync(path.join(cwd, './geektime/index/index.js')),
+        ...glob.sync(path.join(cwd, './geektime/search*/index.js'))
+    ];
+   
     entryFiles.map((file, _index) => {
         const match = file.match(/geektime\/(.*)\/index\.js/);
         const pageName = match && match[1];

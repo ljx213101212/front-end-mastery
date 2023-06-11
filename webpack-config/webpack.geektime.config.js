@@ -22,7 +22,19 @@ module.exports = merge(common, smp.wrap({
         rules: [
             {
                 test: /.js$/,
-                use: 'babel-loader'
+                use: 'babel-loader',
+                exclude: /node_modules/,
+                // 尝试了thread-loader,但是相反比不加还耗时，目前猜测是因为项目太小，建立新的wokrer耗时大于多进程产生的效能
+                // use: [
+                //     {
+                //         loader: 'thread-loader',
+                //         options: {
+                //             workers: 1, //Use 2 worker threads
+                //         }
+                //     },
+
+                //     'babel-loader',
+                // ]
             },
             {
                 test: /.css$/,
@@ -60,7 +72,8 @@ module.exports = merge(common, smp.wrap({
             }
         ]
     },
-    //plugin:{} was moved to common
+    plugins: [
+    ],
     optimization: {
         minimize: true,
         minimizer: [

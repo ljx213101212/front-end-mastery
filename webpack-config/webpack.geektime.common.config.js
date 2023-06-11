@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const path = require('path');
 const utils = require("./webpack.geektime.utils.config");
@@ -32,6 +33,8 @@ module.exports = {
         new CleanWebpackPlugin(),
         //输出打包过程中的状态信息
         new FriendlyErrorsWebpackPlugin(),
+        //打开用来分析bundle体积占用ui页面，通常只有调试bundle体积时才打开
+        //new BundleAnalyzerPlugin(),
         //compiler 在每次构建结束后会触发done这个hook
         function() {
             this.hooks.done.tap('done', (stats) => {
