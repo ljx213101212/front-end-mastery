@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const path = require('path');
 
 const smp = new SpeedMeasureWebpackPlugin();
@@ -73,6 +74,21 @@ module.exports = merge(common, smp.wrap({
         ]
     },
     plugins: [
+        //和splitChunks reactVendor功能一致，都是分离基础库，使用之一即可，不然会重复引用相同的基础库.
+        // new HtmlWebpackExternalsPlugin({
+        //     externals: [
+        //       {
+        //         module: 'react',
+        //         entry: 'https://unpkg.com/react@18.2.0/umd/react.development.js',
+        //         global: 'React',
+        //       },
+        //       {
+        //         module: 'react-dom',
+        //         entry: 'https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js',
+        //         global: 'ReactDOM',
+        //       },
+        //     ]
+        // }),
     ],
     optimization: {
         minimize: true,
@@ -94,6 +110,7 @@ module.exports = merge(common, smp.wrap({
                     minChunks: 1
                 },
                 //split react vendor, so it can be cached by user's browser.
+                //和html-webpack-externals-plugin 功能一样都是分离基础库, 使用其中之一即可
                 reactVendor: {
                     test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
                     name: 'vendor-react',
