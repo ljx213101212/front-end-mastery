@@ -8,6 +8,7 @@ Why do we need constructor tool?
 
 # Core Concept
 
+
 ## entry
 
 1. single entry as string
@@ -140,3 +141,10 @@ https://github.com/webpack/loader-runner/blob/dac81a7f171993e6a1aa15bfd86b115db1
 ```
 Supported by default
 ```
+
+### Core Module
+
+- webpack-cli
+  - yargs
+
+- tapable hooks
