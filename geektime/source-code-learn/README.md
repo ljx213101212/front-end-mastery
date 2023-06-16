@@ -4,6 +4,14 @@ What the hack does following command do exactly?
 ```
 webpack build
 ```
+
+## PS: 分析源码比较好用的命令
+```sh
+grep "[关键字]" -rn ./node_modules/webpack
+
+-r: recursive search
+-n: show line number
+```
 ## tapable - Design Pattern (Observer Pattern)
 Adding and managing hooks (event callbacks) in Webpack.  Being seen in Babel and Jest too.
 This design pattern is widely used and need to understand this concept before start exploring the source code.
@@ -118,22 +126,21 @@ lib/javascript/JavascriptParser.js => parse
 
 ```
 
-
-
-
-
-
-## compile step
-
-### 以下步骤需要逐一进行源码分析
-
-#### PS: 分析源码比较好用的命令
-```sh
-grep "[关键字]" -rn ./node_modules/webpack
-
--r: recursive search
--n: show line number
+### seal and emit
 ```
+
+lib/Compilation.js => compilation.seal() => ChunkGraph.setChunkGraphForModule(module, chunkGraph);
+                       => createModuleAssets()  (core implemenation for seal)
+                       => this.createChunkAssets()
+                         => emitAsset(core implementation for emit)
+
+```
+
+
+
+
+## Summary
+
 
 ```
 entry-option -> run -> make -> before-resolve -> build-module -> normal-module-loader (getCompilationHooks) -> program -> seal -> emit
