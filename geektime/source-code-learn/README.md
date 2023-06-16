@@ -1,4 +1,4 @@
-# Utlimate Question
+# Ultimate Question
 
 What the hack does following command do exactly?
 ```
