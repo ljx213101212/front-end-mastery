@@ -4,6 +4,9 @@ What the hack does following command do exactly?
 ```
 webpack build
 ```
+## tapable - Design Pattern (Observer Pattern)
+Adding and managing hooks (event callbacks) in Webpack.  Being seen in Babel and Jest too.
+This design pattern is widely used and need to understand this concept before start exploring the source code.
 
 ## webpack-cli
 
@@ -44,17 +47,80 @@ lib/Compiler.js => compile(callback)
     this.hooks.beforeCompile.callAsync()
     this.hooks.make.callAsync()
     this.hooks.finishMake.callAsync()
-    compilation.finish()
-    compilation.seal()
+    ...
+    ...
+    compilation.finish() => modulesWithProfiles
+                         => getLogger
+    compilation.seal() => ChunkGraph.setChunkGraphForModule(module, chunkGraph);
+                       => createModuleAssets()  (core implemenation for seal)
+                       => this.createChunkAssets()
+                         => emitAsset(core implementation for emit)
 
 ```
 
 ### mini flows
 ```
-6. createCompiler -> 7. comiler.run -> 8. beforeRun -> 9. run -> 10. readRecord -> 11. beforeCompile -> 12. make -> 13. finishMake -> 14. finish -> 15. seal 
+6. createCompiler -> 7. comiler.run -> 8. beforeRun -> 9. run -> 10. readRecord -> 11. beforeCompile -> 12. make -> ... -> 13. finishMake -> 14. finish -> 15. seal 
 ```
 
-#### beforeRun(TODO)
+#### beforeRun
+
+```
+lib/node/NodeEnvironmentPlugin.js => compiler.hooks.beforeRun.tap
+    enhanced-resolve/lib/CachedInputFileSystem.js => purge
+    compiler.fsStartTime = Date.now(); 
+    9.run
+    ...
+    this.readRecord() -> read previous build record
+    ...
+    this.compile
+    11.before compile
+    ...
+    onCompiled
+```
+
+#### this.compile 
+
+```
+lib/Compiler.js => const params = this.newCompilationParams();
+    normalModuleFactory: this.createNormalModuleFactory(),   //very important module
+        lib/NormalModuleFactory.js => this.hooks.factorize.tapAsync 
+	contextModuleFactory: this.createContextModuleFactory()  //very important module
+
+    11.before compile
+    this.hooks.beforeCompile.callAsync
+        const compilation = this.newCompilation(params);
+            const compilation = this.createCompilation(params); // this.compilation object created
+    
+    this.hook.make.callAsync
+        lib/EntryPlugin.js => compiler.hooks.make.tapAsyn's callback => compilation.addEntry
+        ...
+
+        lib/NormalModuleFactory.js => this.hooks.beforeResolve.callAsync
+                                   => this.hooks.factorize.callAsync
+                                     => this.hooks.afterResolve.callAsync
+                                     => this.hooks.createModule.callAsync
+                                        => createdModule = new NormalModule //module creation
+                                        /lib/Compilation.js => this._handleModuleBuildAndDependencies 
+                                                            => this.buildModule //module build (build-module)
+                                                            lib/NormalModuleFactory.js => build => NormalModule.getCompilationHooks (normal-module-loader)
+                                                                                                => result = this.parser.parse (AST generation)
+
+                                            
+```
+
+### program
+
+```
+lib/javascript/JavascriptParser.js => parse
+                  require("acorn") => _parse()  AST(core implementation)
+                                   => this.hooks.program 
+
+```
+
+
+
+
 
 
 ## compile step
@@ -70,7 +136,7 @@ grep "[关键字]" -rn ./node_modules/webpack
 ```
 
 ```
-entry-option -> run -> make -> before-resolve -> build-module -> normal-module-loader -> program -> seal -> emit
+entry-option -> run -> make -> before-resolve -> build-module -> normal-module-loader (getCompilationHooks) -> program -> seal -> emit
 
 entry-option: 初始化option
 run: 开始编译
