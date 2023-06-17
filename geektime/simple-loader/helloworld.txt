@@ -1,1 +1,1 @@
-Hello World! ~foo~
+"Hello World! ~_~"

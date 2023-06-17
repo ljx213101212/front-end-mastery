@@ -26,15 +26,14 @@ module.exports = function (source) {
         filePath = filename + "." + ext;
     }
 
-    const url = loaderUtils.interpolateName(this, filePath, {
-        content: source,
-    });
-    this.emitFile(url, source);
-
     const value = JSON.stringify(source)
     .replace(/\u2028/g, '\\u2028')
     .replace(/\u2029/g, '\\u2029')
-    .replace(/foo/g, '_');
-    
+    .replace(/foo/g, "_");
+
+    const url = loaderUtils.interpolateName(this, filePath, {
+        content: value,
+    });
+    this.emitFile(url, value);
     return `module.exports = ${value}`;
 }
