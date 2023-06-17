@@ -29,7 +29,7 @@ module.exports = function (source) {
     const url = loaderUtils.interpolateName(this, filePath, {
         content: source,
     });
-    this.emitFile(path.join(__dirname, url), source);
+    this.emitFile(url, source);
 
     const value = JSON.stringify(source)
     .replace(/\u2028/g, '\\u2028')

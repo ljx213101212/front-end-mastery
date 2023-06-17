@@ -12,5 +12,6 @@ console.log('\u2028');   // Output: (a blank line)
 console.log('\\u2028'); // Output: \u2028
 4. 利用options 传入参数name 来给输出程序取别名
 5. 用loader-runner, loader-utils 来进行调试
+6. 在webpack的环境下使用此loader，并输出sample bundle.js
 
 ```

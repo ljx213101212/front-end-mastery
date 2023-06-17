@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "example": "webpack --config ./webpack.config.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "loader-utils": "^3.2.1"
+    "loader-utils": "^3.2.1",
+    "webpack": "^5.87.0",
+    "webpack-cli": "^5.1.4"
   }
 }
