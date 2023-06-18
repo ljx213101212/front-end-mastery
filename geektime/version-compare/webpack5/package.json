@@ -1,0 +1,21 @@
+{
+  "name": "webpack5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:nodejs:polyfill": "webpack --config ./webpack.nodejs.polyfill.config.js",
+    "build:treeshaking:nested:param": "webpack --config ./webpack.treeshaking.nested.param.config.js",
+    "build:treeshaking:nested:function": "webpack --config ./webpack.treeshaking.nested.function.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.87.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  }
+}

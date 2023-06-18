@@ -1,0 +1,21 @@
+{
+  "name": "webpack4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:nodejs:polyfill": "webpack --config ./webpack.nodejs.polyfill.config.js",
+    "build:treeshaking:nested:param": "webpack --config ./webpack.treeshaking.nested.param.config.js",
+    "build:treeshaking:nested:function": "webpack --config ./webpack.treeshaking.nested.function.config.js"
+  },
+  "devDependencies": {
+    "webpack-cli": "4.1.0",
+    "webpack": "4.46.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  }
+}
