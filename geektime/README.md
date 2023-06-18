@@ -198,3 +198,99 @@ console.log('\\u2028'); // Output: \u2028
 2.输出在dist 目录
 3.可自定义zip 文件的名称
 ```
+
+### React 全家桶和webpack 开发商城项目笔记
+
+> https://gitee.com/geektime-geekbang/geektime-webpack-course/tree/master/code/chapter08/shopping
+
+功能开发要点
+```
+浏览器端:
+  - 组件化，组件颗粒度尽可能小
+  - 直接服用经典的构建配置，无需关注构建脚本
+
+服务器端：
+  - MVC 开发方式，数据库基于Sequelize
+  - Rest API 风格
+  - 采用 JWT 进行鉴权
+
+```
+
+```
+1. 商城技术展选型
+  前端 + 后端
+
+2. 商城架构设计
+  - 平台层
+    - 用户端
+     - 首页 
+      - Banner 轮播
+      - 公告
+      - 商品列表
+      - 底部 bar
+      - 搜索框
+      - 新品列表
+     - 列表页
+      - 搜索框
+      - 左侧bar
+      - 右侧列表
+     - 详情页
+     - 购物车
+     - 订单
+     - 搜索
+     - 登录
+     - 注册
+    - 管理后台
+  - 服务层
+    - 商品服务
+      - 商品查询服务
+      - 商品录入
+      - 商品信息修改
+    - 订单服务
+    - 购物车服务
+    - 搜索服务
+    - 支付服务
+      - 添加评论
+      - 删除评论
+    - 评论服务
+    - 用户服务
+      - 登录
+      - 注册
+      - 个人信息查询
+      - 个人信息修改
+  - 基础设施
+    - MySQL
+    - docker
+    - k8s
+
+3. 数据库实体和表结构设计
+4. 前后端环境搭建
+5. 开发
+6. 优化策略
+  - 渲染优化
+   - 首页，列表页，详情页采用SSR 或者 Native 渲染
+   - 个人中心页预渲染
+  - 弱网优化
+    - 使用离线包, PWA等离线缓存技术
+  - Webview 优化
+    - 打开 Webview 的同时并行地加载页面数据
+
+```
+
+### 加餐
+
+1. 学会建立思考和比对新特性(webpack5 vs webpack4)
+ - Treeshaking 链式调用优化
+ - Treeshaking 函数嵌套调用优化
+ - Module federation 的应用
+2. bundle 和 bundless的差异
+  bundle: 请求一个bundle.js  (ex. Webpack)
+    - 适合生产环境, 减少http请求
+  bundleless:  请求没有打包的多个.js 文件 (ex. Snowpack)
+    - 适合开发环境，每次更改源文件，只会请求更改的文件，而不用重新打包，更适合热更新（HMR）
+3. Vite 的构建原理
+  - 重写模块路径 (src/node/server/serverPluginModuleRewrite.js)
+  - 静态文件的解析
+  - vue 脚本打包策略
+   
+
